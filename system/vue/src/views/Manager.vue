@@ -3,7 +3,7 @@
     <div class="manager-header">
       <div class="manager-header-left">
         <img src="@/assets/imgs/logo.png" alt="">
-        <div class="title">管理系统</div>
+        <div class="title">心理健康预约系统</div>
       </div>
       <div class="manager-header-center">
         <el-breadcrumb separator="/">
@@ -50,7 +50,8 @@
               <el-icon><Menu /></el-icon>
               <span>用户管理</span>
             </template>
-            <el-menu-item index="/manager/admin">管理员信息</el-menu-item>
+            <el-menu-item index="/manager/user">用户信息</el-menu-item>
+             <el-menu-item index="/manager/admin">管理员信息</el-menu-item>
           </el-sub-menu>
         </el-menu>
       </div>
