@@ -46,6 +46,40 @@ INSERT INTO `admin` VALUES (1,'admin','admin','管理员','http://localhost:9090
 UNLOCK TABLES;
 
 --
+-- Table structure for table `doctor`
+--
+
+DROP TABLE IF EXISTS `doctor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `doctor` (
+  `id` int NOT NULL COMMENT '主键ID',
+  `username` varchar(255) DEFAULT NULL COMMENT '账号',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码',
+  `avatar` varchar(255) DEFAULT NULL COMMENT '头像',
+  `role` varchar(255) DEFAULT NULL COMMENT '角色',
+  `seniority` int DEFAULT NULL COMMENT '工龄',
+  `content` text COMMENT '简介',
+  `phone` varchar(255) DEFAULT NULL COMMENT '电话',
+  `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
+  `code` varchar(255) DEFAULT NULL COMMENT '身份证',
+  `certificate` varchar(255) DEFAULT NULL COMMENT '资格证',
+  `status` varchar(255) DEFAULT NULL COMMENT '审证状态',
+  `name` varchar(255) DEFAULT NULL COMMENT '姓名',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='心理医生表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `doctor`
+--
+
+LOCK TABLES `doctor` WRITE;
+/*!40000 ALTER TABLE `doctor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `doctor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `notice`
 --
 
@@ -109,4 +143,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-05-07 23:09:36
+-- Dump completed on 2026-05-08 22:13:23
