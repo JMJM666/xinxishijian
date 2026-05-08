@@ -14,11 +14,11 @@ public interface AdminMapper {
     void deleteById(Integer id);
 
     @Select("select * from `admin` where id = #{id}")
-    Admin selectById(Integer id);管理员 selectById(整型 id);
+    Admin selectById(Integer id);
 
     @Select("select * from `admin` where username = #{username}")
-    Admin selectByUsername(String username);管理员 按用户名选择(字符串 用户名);
+    Admin selectByUsername(String username);
 
-    List列表<Admin管理员> selectAll全选(Admin管理员管理员 admin管理员管理员);列表<管理员> 全部选择(管理员 管理员);
+    List<Admin> selectAll(Admin admin);
 
 }

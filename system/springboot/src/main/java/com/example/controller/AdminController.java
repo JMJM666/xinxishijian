@@ -25,7 +25,7 @@ public class AdminController {
     @PostMapping("/add")
     public Result add(@RequestBody Admin admin) {
         adminService.add(admin);
-        return Result.success();返回结果。成功();
+        return Result.success();
     }
 
     /**
@@ -34,7 +34,7 @@ public class AdminController {
     @PutMapping("/update")
     public Result update(@RequestBody Admin admin) {
         adminService.updateById(admin);
-        return Result.success();返回结果。成功();返回结果。成功()；返回结果。成功();
+        return Result.success();
     }
 
     /**
@@ -43,7 +43,7 @@ public class AdminController {
     @DeleteMapping("/delete/{id}")
     public Result delete(@PathVariable Integer id) {
         adminService.deleteById(id);
-        return Result.success();返回结果。成功();返回结果。成功()；返回结果。成功();返回结果。成功()；返回结果。成功()；返回结果。成功()；返回结果。成功();
+        return Result.success();
     }
 
     /**
@@ -52,15 +52,15 @@ public class AdminController {
     @DeleteMapping("/delete/batch")
     public Result delete(@RequestBody List<Integer> ids) {
         adminService.deleteBatch(ids);
-        return Result.success();返回结果。成功();返回结果。成功()；返回结果。成功();返回结果。成功()；返回结果。成功()；返回结果。成功()；返回结果。成功();
+        return Result.success();
     }
 
     /**
      * 单个查询
      */
     @GetMapping("/selectById/{id}")
-    public Result selectById(@PathVariable Integer id) {公共 结果 selectById(@PathVariableInteger id) {公共 结果 selectById(@PathVariableInteger id) {公共 结果selectById(@PathVariableIntegerid) {公共 结果 selectById(@PathVariableInteger id) {公共 结果selectById(@PathVariableIntegerid) {公共 结果selectById(@PathVariableIntegerid) {公共 结果selectById(@PathVariableIntegerid) {
-        Admin admin = adminService.selectById(id);管理员 admin= adminService.selectById(id);
+    public Result selectById(@PathVariable Integer id) {
+        Admin admin = adminService.selectById(id);
         return Result.success(admin);
     }
 
@@ -70,14 +70,14 @@ public class AdminController {
     @GetMapping("/selectAll")
     public Result selectAll(Admin admin) {
         List<Admin> list = adminService.selectAll(admin);
-        return Result.success(list);返回结果。成功(列表);
+        return Result.success(list);
     }
 
     /**
      * 分页查询
      */
     @GetMapping("/selectPage")
-    public Result selectPage(Admin admin,公共 结果 selectPage(管理员 admin,
+    public Result selectPage(Admin admin,
                              @RequestParam(defaultValue = "1") Integer pageNum,
                              @RequestParam(defaultValue = "10") Integer pageSize) {
         PageInfo<Admin> pageInfo = adminService.selectPage(admin, pageNum, pageSize);

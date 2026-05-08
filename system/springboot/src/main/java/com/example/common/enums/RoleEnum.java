@@ -6,5 +6,5 @@ public enum RoleEnum {
     // 心理医生
     DOCTOR,
     // 用户
-    USER用户
+    USER
 }

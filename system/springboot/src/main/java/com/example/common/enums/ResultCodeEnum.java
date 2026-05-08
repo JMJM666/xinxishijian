@@ -1,6 +1,6 @@
 package com.example.common.enums;
 
-public enum ResultCodeEnum {公共 枚举 ResultCodeEnum结果代码枚举 {
+public enum ResultCodeEnum {
 
     SUCCESS("200", "成功"),
     PARAM_ERROR("400", "参数异常"),

@@ -73,14 +73,14 @@ public class AdminService {
      */
     public Admin login(Account account) {
         Admin dbAdmin = adminMapper.selectByUsername(account.getUsername());
-        if (ObjectUtil.isNull(dbAdmin)) {如果 (ObjectUtil.isNull(dbAdmin)) {
-            throw new CustomException(ResultCodeEnum.USER_NOT_EXIST_ERROR);抛出 新的 自定义异常(ResultCodeEnum.USER_NOT_EXIST_ERROR);
+        if (ObjectUtil.isNull(dbAdmin)) {
+            throw new CustomException(ResultCodeEnum.USER_NOT_EXIST_ERROR);
         }
         if (!dbAdmin.getPassword().equals(account.getPassword())) {
             throw new CustomException(ResultCodeEnum.USER_ACCOUNT_ERROR);
         }
         // 生成token
-        String token = TokenUtils.createToken(dbAdmin.getId() + "-" + dbAdmin.getRole(), dbAdmin.getPassword());字符串 令牌= TokenUtils.创建令牌(dbAdmin.获取ID() + "-"+ dbAdmin.获取角色(), dbAdmin.获取密码());字符串令牌= TokenUtils.创建令牌(dbAdmin.获取ID)+"-"+ dbAdmin.获取角色, dbAdmin.获取密码;+ dbAdmin.获取角色，dbAdmin.获取密码；
+        String token = TokenUtils.createToken(dbAdmin.getId() + "-" + dbAdmin.getRole(), dbAdmin.getPassword());
         dbAdmin.setToken(token);
         return dbAdmin;
     }
@@ -90,8 +90,8 @@ public class AdminService {
      */
     public void updatePassword(Account account) {
         Admin dbAdmin = adminMapper.selectByUsername(account.getUsername());
-        if (ObjectUtil.isNull(dbAdmin)) {如果 (ObjectUtil.isNull(dbAdmin)) {如果 (ObjectUtil.isNull(dbAdmin)) {如果(ObjectUtil.isNull(dbAdmin)) {
-            throw new CustomException(ResultCodeEnum.USER_NOT_EXIST_ERROR);抛出 新的 自定义异常(抛出新的自定义异常(ResultCodeEnum.USER_NOT_EXIST_ERROR);抛出 新的 自定义异常ResultCodeEnum.USER_NOT_EXIST_ERROR);抛出 新的 自定义异常ResultCodeEnum.USER_NOT_EXIST_ERROR);
+        if (ObjectUtil.isNull(dbAdmin)) {
+            throw new CustomException(ResultCodeEnum.USER_NOT_EXIST_ERROR);
         }
         if (!account.getPassword().equals(dbAdmin.getPassword())) {
             throw new CustomException(ResultCodeEnum.PARAM_PASSWORD_ERROR);

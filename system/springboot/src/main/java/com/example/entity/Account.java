@@ -37,11 +37,11 @@ public class Account {
         return role;
     }
 
-    public void setRole(String role) {公共 void setRole(字符串 role) {
-        this这个.role = role;这个.角色 = 角色;这个.角色 = 角色;这个.角色 = 角色;这个.角色 = 角色;这个.角色 = 角色;这个.角色 = 角色;这个.角色 = 角色;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public String getNewPassword() {公共 字符串 getNewPassword() {公共 字符串 getNewPassword获取新密码() {公共 字符串getNewPassword获取新密码获取新密码() {
+    public String getNewPassword() {
         return newPassword;
     }
 
