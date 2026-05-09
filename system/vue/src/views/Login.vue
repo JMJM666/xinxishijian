@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login-box">
-      <div style="font-weight: bold; font-size: 24px; text-align: center; margin-bottom: 30px; color: #1450aa">欢 迎 登 录</div>
+      <div style="font-weight: bold; font-size: 24px; text-align: center; margin-bottom: 30px; color: #1450aa">欢迎登录心理健康预约系统</div>
       <el-form ref="formRef" :model="data.form" :rules="data.rules">
         <el-form-item prop="username">
           <el-input :prefix-icon="User" size="large" v-model="data.form.username" placeholder="请输入账号"></el-input>
@@ -12,6 +12,8 @@
         <el-form-item prop="role">
           <el-select size="large" v-model="data.form.role">
             <el-option value="ADMIN" label="管理员"></el-option>
+             <el-option value="DOCTOR" label="心理医生"></el-option>
+              <el-option value="USER" label="用户"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
@@ -55,7 +57,13 @@ const login = () => {
           ElMessage.success('登录成功')
           // 存储用户信息到浏览器的缓存
           localStorage.setItem('xm-user', JSON.stringify(res.data))
-          router.push('/manager/home')
+         setInterval(() => {
+           if (res.data.role === 'USER') {
+             location.href = '/front/home'
+           } else {
+             location.href = '/manager/home'
+           }
+         }, 500)
         } else {
           ElMessage.error(res.msg)
         }
@@ -72,7 +80,8 @@ const login = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to top, #7f7fd5, #86a8e7, #91eae4);
+  background-image: url("@/assets/imgs/login.jpg");
+  background-size: cover;
 }
 .login-box {
   width: 350px;
