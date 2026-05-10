@@ -4,6 +4,7 @@ public class Account {
 
     private Integer id;
     private String username;
+    private String name;
     private String password;
     private String role;
     private String newPassword;
@@ -56,4 +57,8 @@ public class Account {
     public void setToken(String token) {
         this.token = token;
     }
+
+    public String getName(){ return name; }
+
+    public void setName(String name){ this.name = name; }
 }

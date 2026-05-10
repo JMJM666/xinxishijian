@@ -12,6 +12,7 @@ import com.example.utils.TokenUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,6 +36,9 @@ public class DoctorService {
         }
         if (ObjectUtil.isEmpty(doctor.getName())) {
             doctor.setName(doctor.getUsername());
+        }
+        if(ObjectUtil.isEmpty(doctor.getStatus())){
+            doctor.setStatus("待审批");
         }
         doctor.setRole(RoleEnum.DOCTOR.name());
         doctorMapper.insert(doctor);
@@ -98,6 +102,12 @@ public class DoctorService {
         }
         dbDoctor.setPassword(account.getNewPassword());
         doctorMapper.updateById(dbDoctor);
+    }
+
+    public void register(Account account){
+        Doctor doctor = new Doctor();
+        BeanUtils.copyProperties(account,doctor);
+        add(doctor);
     }
 
 }

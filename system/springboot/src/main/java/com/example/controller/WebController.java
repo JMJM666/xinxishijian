@@ -50,7 +50,13 @@ public class WebController {
      * 注册
      */
     @PostMapping("/register")
-    public Result register() {
+    public Result register(@RequestBody Account account) {
+        if(RoleEnum.DOCTOR.name().equals(account.getRole())){
+            doctorService.register(account);
+        }
+        if(RoleEnum.USER.name().equals(account.getRole())){
+            doctorService.register(account);
+        }
         return Result.success();
     }
 
@@ -61,6 +67,12 @@ public class WebController {
     public Result updatePassword(@RequestBody Account account) {
         if (RoleEnum.ADMIN.name().equals(account.getRole())) {
             adminService.updatePassword(account);
+        }
+        if (RoleEnum.DOCTOR.name().equals(account.getRole())) {
+            doctorService.updatePassword(account);
+        }
+        if (RoleEnum.USER.name().equals(account.getRole())) {
+            userService.updatePassword(account);
         }
         return Result.success();
     }
