@@ -25,6 +25,7 @@
             </div>
             <template #dropdown>
               <el-dropdown-menu>
+              <el-dropdown-item @click="navTo('/front/password')">修改密码</el-dropdown-item>
                 <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -48,7 +49,9 @@
     top: '',
     noticeData: []
   })
-
+    const navTo=(url)=>{
+        location.href=url
+    }
   const logout = () => {
     localStorage.removeItem('xm-user')
     router.push('/login')

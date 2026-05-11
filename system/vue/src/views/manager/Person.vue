@@ -59,6 +59,17 @@ const update = () => {
       }
     })
   }
+  if (data.user.role === 'DOCTOR') {
+    request.put('/doctor/update', data.user).then(res => {
+      if (res.code === '200') {
+        ElMessage.success('保存成功')
+        localStorage.setItem('xm-user', JSON.stringify(data.user))
+        emit('updateUser')
+      } else {
+        ElMessage.error(res.msg)
+      }
+    })
+  }
 }
 </script>
 
