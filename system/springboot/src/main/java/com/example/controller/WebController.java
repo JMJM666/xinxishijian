@@ -55,7 +55,7 @@ public class WebController {
             doctorService.register(account);
         }
         if(RoleEnum.USER.name().equals(account.getRole())){
-            doctorService.register(account);
+            userService.register(account);
         }
         return Result.success();
     }
