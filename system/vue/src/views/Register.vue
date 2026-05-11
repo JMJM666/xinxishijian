@@ -6,11 +6,20 @@
         <el-form-item prop="username">
           <el-input :prefix-icon="User" size="large" v-model="data.form.username" placeholder="请输入账号"></el-input>
         </el-form-item>
+         <el-form-item prop="username">
+                  <el-input :prefix-icon="User" size="large" v-model="data.form.name" placeholder="请输入姓名"></el-input>
+                </el-form-item>
         <el-form-item prop="password">
           <el-input show-password :prefix-icon="Lock" size="large" v-model="data.form.password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item prop="confirmPassword">
           <el-input show-password :prefix-icon="Lock" size="large" v-model="data.form.confirmPassword" placeholder="请确认密码"></el-input>
+        </el-form-item>
+        <el-form-item prop="role">
+          <el-select size="large" v-model="data.form.role" placeholder="请选择角色">
+            <el-option value="DOCTOR" label="心理医生"></el-option>
+            <el-option value="USER" label="用户"></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item>
           <el-button size="large" type="primary" style="width: 100%" @click="login">注 册</el-button>
@@ -80,10 +89,11 @@ const login = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to top, #00467f, #a5cc82);
+  background-image: url("@/assets/imgs/register.jpg");
+  background-size: cover;
 }
 .login-box {
-  width: 350px;
+  width: 450px;
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
