@@ -43,9 +43,9 @@
               <el-icon><Menu /></el-icon>
               <span>信息管理</span>
             </template>
-            <el-menu-item index="/manager/notice">系统公告</el-menu-item>
+            <el-menu-item index="/manager/notice" v-if="data.user.role==='ADMIN'">系统公告</el-menu-item>
           </el-sub-menu>
-          <el-sub-menu index="2">
+          <el-sub-menu index="2" v-if="data.user.role==='ADMIN'">
             <template #title>
               <el-icon><Menu /></el-icon>
               <span>用户管理</span>

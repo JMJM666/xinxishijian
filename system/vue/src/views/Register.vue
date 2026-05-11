@@ -22,7 +22,7 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-button size="large" type="primary" style="width: 100%" @click="login">注 册</el-button>
+          <el-button size="large" type="primary" style="width: 100%" @click="register">注 册</el-button>
         </el-form-item>
         <div style="text-align: right">
           已有账号？请 <a href="/login">登录</a>
@@ -66,13 +66,15 @@ const data = reactive({
 
 const formRef = ref()
 
-const login = () => {
+const register = () => {
   formRef.value.validate(valid => {
     if (valid) { // 表示表单校验通过
       request.post('/register', data.form).then(res => {
         if (res.code === '200') {
           ElMessage.success('注册成功')
-          router.push('/login')
+        setInterval(() => {
+          location.href = '/login'
+        }, 500)
         } else {
           ElMessage.error(res.msg)
         }
