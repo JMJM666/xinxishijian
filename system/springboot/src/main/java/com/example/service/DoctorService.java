@@ -110,4 +110,8 @@ public class DoctorService {
         add(doctor);
     }
 
+    public void submit(Doctor doctor) {
+        doctor.setStatus("待审批");
+        doctorMapper.updateById(doctor);
+    }
 }

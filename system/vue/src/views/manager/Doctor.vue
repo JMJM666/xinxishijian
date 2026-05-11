@@ -11,7 +11,7 @@
     </div>
 
     <div class="card" style="margin-bottom: 5px">
-      <el-table stripe :data="data.tableData" @selection-change="handleSelectionChange">
+      <el-table-column stripe :data="data.tableData" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" />
         <el-table-column prop="username" label="账号" />
         <el-table-column prop="avatar" label="头像">
@@ -29,6 +29,12 @@
          <el-table-column prop="phone" label="电话" />
         <el-table-column prop="email" label="邮箱" />
         <el-table-column prop="status" label="审批状态" />
+        <template v-slot="scope">
+          <el-tag v-if="scope.row.status === '待审批'" type="warning">{{scope.row.status}}</el-tag>
+          <el-tag v-if="scope.row.status === '审批通过'" type="success">{{scope.row.status}}</el-tag>
+          <el-tag v-if="scope.row.status === '审批拒绝'" type="danger">{{scope.row.status}}</el-tag>
+        </template>
+      </el-table-column>
         <el-table-column label="操作" width="100" fixed="right">
           <template v-slot="scope">
             <el-button type="primary" circle :icon="Edit" @click="handleEdit(scope.row)"></el-button>
@@ -87,6 +93,7 @@
        <el-radio-button label="待审批" value="待审批" />
        <el-radio-button label="审批通过" value="审批通过" />
        <el-radio-button label="审批拒绝" value="审批拒绝" />
+       </el-radio-group>
          </el-form-item>
       </el-form>
       <template #footer>
@@ -116,7 +123,15 @@ const data = reactive({
   pageSize: 10,
   total: 0,
   name: null,
-  ids: []
+  ids: [],
+  rules: {
+    username: [
+      {required: true, message: '请输入账号', trigger: 'blur'},
+    ],
+    name: [
+      {required: true, message: '请输入姓名', trigger: 'blur'},
+    ],
+  }
 })
 
 const load = () => {

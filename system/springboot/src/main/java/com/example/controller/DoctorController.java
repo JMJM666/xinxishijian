@@ -38,6 +38,15 @@ public class DoctorController {
     }
 
     /**
+     * 修改
+     */
+    @PutMapping("/submit")
+    public Result submit(@RequestBody Doctor doctor) {
+        doctorService.submit(doctor);
+        return Result.success();
+    }
+
+    /**
      * 单个删除
      */
     @DeleteMapping("/delete/{id}")
