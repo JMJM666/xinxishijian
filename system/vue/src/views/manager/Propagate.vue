@@ -73,7 +73,7 @@ import {Delete, Edit} from "@element-plus/icons-vue";
 
 const baseUrl = import.meta.env.VITE_BASE_URL
 const data = reactive({
- user: JSON.parse(localStorage.getItem('xm-user') || '{}')
+ user: JSON.parse(localStorage.getItem('xm-user') || '{}'),
   formVisible: false,
   form: {},
   tableData: [],
