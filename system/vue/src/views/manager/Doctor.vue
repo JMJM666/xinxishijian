@@ -11,7 +11,7 @@
     </div>
 
     <div class="card" style="margin-bottom: 5px">
-      <el-table-column stripe :data="data.tableData" @selection-change="handleSelectionChange">
+      <el-table  :data="data.tableData" stripe @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" />
         <el-table-column prop="username" label="账号" />
         <el-table-column prop="avatar" label="头像">
@@ -42,6 +42,7 @@
           </template>
         </el-table-column>
       </el-table>
+
     </div>
     <div class="card" v-if="data.total">
       <el-pagination @current-change="load" background layout="prev, pager, next" :page-size="data.pageSize" v-model:current-page="data.pageNum" :total="data.total" />
