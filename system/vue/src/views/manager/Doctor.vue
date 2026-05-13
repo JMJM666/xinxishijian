@@ -34,7 +34,7 @@
           <el-tag v-if="scope.row.status === '审批通过'" type="success">{{scope.row.status}}</el-tag>
           <el-tag v-if="scope.row.status === '审批拒绝'" type="danger">{{scope.row.status}}</el-tag>
         </template>
-      </el-table-column>
+
         <el-table-column label="操作" width="100" fixed="right">
           <template v-slot="scope">
             <el-button type="primary" circle :icon="Edit" @click="handleEdit(scope.row)"></el-button>
