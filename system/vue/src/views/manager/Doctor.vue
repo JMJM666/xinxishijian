@@ -28,13 +28,13 @@
         <el-table-column prop="role" label="角色" />
          <el-table-column prop="phone" label="电话" />
         <el-table-column prop="email" label="邮箱" />
-        <el-table-column prop="status" label="审批状态" />
+        <el-table-column prop="status" label="审批状态" >
         <template v-slot="scope">
           <el-tag v-if="scope.row.status === '待审批'" type="warning">{{scope.row.status}}</el-tag>
           <el-tag v-if="scope.row.status === '审批通过'" type="success">{{scope.row.status}}</el-tag>
           <el-tag v-if="scope.row.status === '审批拒绝'" type="danger">{{scope.row.status}}</el-tag>
         </template>
-
+        </el-table-column>
         <el-table-column label="操作" width="100" fixed="right">
           <template v-slot="scope">
             <el-button type="primary" circle :icon="Edit" @click="handleEdit(scope.row)"></el-button>
@@ -42,8 +42,8 @@
           </template>
         </el-table-column>
       </el-table>
-
     </div>
+
     <div class="card" v-if="data.total">
       <el-pagination @current-change="load" background layout="prev, pager, next" :page-size="data.pageSize" v-model:current-page="data.pageNum" :total="data.total" />
     </div>
