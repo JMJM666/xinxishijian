@@ -11,7 +11,7 @@
     </div>
 
     <div class="card" style="margin-bottom: 5px">
-      <el-table-column stripe :data="data.tableData" @selection-change="handleSelectionChange">
+      <el-table  :data="data.tableData" stripe @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" />
         <el-table-column prop="username" label="账号" />
         <el-table-column prop="avatar" label="头像">
@@ -28,13 +28,13 @@
         <el-table-column prop="role" label="角色" />
          <el-table-column prop="phone" label="电话" />
         <el-table-column prop="email" label="邮箱" />
-        <el-table-column prop="status" label="审批状态" />
+        <el-table-column prop="status" label="审批状态" >
         <template v-slot="scope">
           <el-tag v-if="scope.row.status === '待审批'" type="warning">{{scope.row.status}}</el-tag>
           <el-tag v-if="scope.row.status === '审批通过'" type="success">{{scope.row.status}}</el-tag>
           <el-tag v-if="scope.row.status === '审批拒绝'" type="danger">{{scope.row.status}}</el-tag>
         </template>
-      </el-table-column>
+        </el-table-column>
         <el-table-column label="操作" width="100" fixed="right">
           <template v-slot="scope">
             <el-button type="primary" circle :icon="Edit" @click="handleEdit(scope.row)"></el-button>
@@ -43,6 +43,7 @@
         </el-table-column>
       </el-table>
     </div>
+
     <div class="card" v-if="data.total">
       <el-pagination @current-change="load" background layout="prev, pager, next" :page-size="data.pageSize" v-model:current-page="data.pageNum" :total="data.total" />
     </div>
