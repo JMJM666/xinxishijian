@@ -16,6 +16,8 @@ const router = createRouter({
         { path: 'user', meta: { name: '用户信息' }, component: () => import('@/views/manager/User.vue'), },
         { path: 'doctor', meta: { name: '心理医生信息' }, component: () => import('@/views/manager/Doctor.vue'), },
         { path: 'doctorAuthentication', meta: { name: '资格认证' }, component: () => import('@/views/manager/DoctorAuthentication.vue'), },
+        { path: 'propagate', meta: { name: '心理健康宣传' }, component: () => import('@/views/manager/Propagate.vue'), },
+        { path: 'sideshow', meta: { name: '轮播图管理' }, component: () => import('@/views/manager/Sideshow.vue'), },
       ]
     },
     {

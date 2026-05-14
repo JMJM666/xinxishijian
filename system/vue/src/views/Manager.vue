@@ -44,7 +44,10 @@
               <el-icon><Menu /></el-icon>
               <span>信息管理</span>
             </template>
+            <el-menu-item index="/manager/sideshow" v-if="data.user.role==='ADMIN'">轮播图管理</el-menu-item>
             <el-menu-item index="/manager/notice" v-if="data.user.role==='ADMIN'">系统公告</el-menu-item>
+            <el-menu-item index="/manager/propagate" v-if="data.user.role==='ADMIN'">心理健康宣传</el-menu-item>
+            <el-menu-item index="/manager/propagate" v-if="data.user.role === 'DOCTOR' && data.user.status === '审批通过'">心理健康宣传</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="2" v-if="data.user.role==='ADMIN'">
             <template #title>
