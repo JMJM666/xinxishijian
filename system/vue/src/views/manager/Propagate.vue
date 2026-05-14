@@ -13,17 +13,17 @@
     <div class="card" style="margin-bottom: 5px">
       <el-table stripe :data="data.tableData" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" />
-        <el-table-column prop="img" label="宣传封面" >
-                  <template v-slot="scope">
-                    <el-image style="width: 80px; height: 60px; border-radius: 5px; display: block" v-if="scope.row.img"
-                              :src="scope.row.img" :preview-src-list="[scope.row.img]" preview-teleported></el-image>
-                  </template>
+        <el-table-column prop="img" label="宣传封面" width="130">
+          <template v-slot="scope">
+            <el-image style="width: 100px; height: 80px; border-radius: 5px; display: block" v-if="scope.row.img"
+                      :src="scope.row.img" :preview-src-list="[scope.row.img]" preview-teleported></el-image>
+          </template>
         </el-table-column>
         <el-table-column prop="title" label="宣传标题" />
         <el-table-column prop="content" label="宣传内容" show-overflow-tooltip/>
         <el-table-column prop="time" label="发布时间" />
         <el-table-column prop="doctorName" label="医生姓名" />
-         <el-table-column prop="num" label="浏览量" />
+        <el-table-column prop="num" label="浏览量" />
         <el-table-column label="操作" width="100" fixed="right">
           <template v-slot="scope">
             <el-button type="primary" circle :icon="Edit" @click="handleEdit(scope.row)" v-if="data.user.role === 'DOCTOR'"></el-button>
@@ -41,15 +41,15 @@
         <el-form-item prop="title" label="宣传标题">
           <el-input v-model="data.form.title" placeholder="请输入宣传标题"></el-input>
         </el-form-item>
-            <el-form-item prop="img" label="宣传封面">
-                      <el-upload
-                          :action="baseUrl + '/files/upload'"
-                          :on-success="handleFileUpload"
-                          list-type="picture"
-                          >
-                        <el-button type="primary">上传封面</el-button>
-                      </el-upload>
-                </el-form-item>
+        <el-form-item prop="img" label="宣传封面">
+          <el-upload
+              :action="baseUrl + '/files/upload'"
+              :on-success="handleFileUpload"
+              list-type="picture"
+          >
+            <el-button type="primary">点击上传封面</el-button>
+          </el-upload>
+        </el-form-item>
         <el-form-item prop="content" label="宣传内容">
           <el-input type="textarea" :rows="4" v-model="data.form.content" placeholder="请输入宣传内容"></el-input>
         </el-form-item>
@@ -72,8 +72,9 @@ import {ElMessage, ElMessageBox} from "element-plus";
 import {Delete, Edit} from "@element-plus/icons-vue";
 
 const baseUrl = import.meta.env.VITE_BASE_URL
+
 const data = reactive({
- user: JSON.parse(localStorage.getItem('xm-user') || '{}'),
+  user: JSON.parse(localStorage.getItem('xm-user') || '{}'),
   formVisible: false,
   form: {},
   tableData: [],
@@ -173,7 +174,7 @@ const reset = () => {
   load()
 }
 const handleFileUpload = (res) => {
-        data.form.img=res.data
+  data.form.img = res.data
 }
 
 load()

@@ -75,19 +75,19 @@
                 role = #{role},
             </if>
             <if test="seniority != null">
-                seniority = #{role},
+                seniority = #{seniority},
             </if>
             <if test="content != null">
-                content = #{role},
+                content = #{content},
             </if>
             <if test="code != null">
-                code = #{role},
+                code = #{code},
             </if>
             <if test="certificate != null">
-                certificate = #{role},
+                certificate = #{certificate},
             </if>
             <if test="status != null">
-                status = #{role},
+                status = #{status},
             </if>
         </set>
         where id = #{id}

@@ -1,6 +1,6 @@
 <template>
   <div style="width: 50%" class="card">
-    <div style = "color: red">一旦认证信息修改，医生状态就会变为待审批状态，管理员审批通过前将无法使用医生功能</div>
+    <div style="color: red">一旦认证信息修改，医生状态就会变为待审批状态，管理员审批通过前将无法使用医生功能</div>
     <el-form ref="userRef" :rules="data.rules" :model="data.user" label-width="95px" style="padding: 20px">
       <el-form-item prop="avatar" label="医生头像">
         <el-upload
@@ -31,10 +31,10 @@
         <el-input v-model="data.user.code" placeholder="请输入身份证号"></el-input>
       </el-form-item>
       <el-form-item prop="content" label="医生简介">
-        <el-input type="textarea" :rows="5" v-model="data.user.content" placeholder="请输入简介"></el-input>
+        <el-input type="textarea" :rows="5" v-model="data.user.content" placeholder="请输入医生简介"></el-input>
       </el-form-item>
       <el-form-item prop="seniority" label="医生工龄">
-        <el-input v-model="data.user.seniority" placeholder="请输入工龄"></el-input>
+        <el-input-number v-model="data.user.seniority" :min="1" placeholder="医生工龄" />
       </el-form-item>
       <el-form-item prop="status" label="审批状态">
         <el-tag v-if="data.user.status === '待审批'" type="warning">{{ data.user.status }}</el-tag>
@@ -49,13 +49,12 @@
 </template>
 
 <script setup>
-import { reactive, ref} from "vue";
+import { reactive, ref } from "vue";
 import request from "@/utils/request.js";
 import {ElMessage} from "element-plus";
 
 const baseUrl = import.meta.env.VITE_BASE_URL
 const userRef = ref()
-
 const data = reactive({
   user: JSON.parse(localStorage.getItem('xm-user') || '{}'),
   rules: {
@@ -83,16 +82,15 @@ const data = reactive({
 const handleFileUpload = (res) => {
   data.user.avatar = res.data
 }
-
-const handleCertificateUpload = (res) =>{
-  data.user.handleCertificateUpload = res.data
+const handleCertificateUpload = (res) => {
+  data.user.certificate = res.data
 }
 
 const emit = defineEmits(['updateUser'])
 const update = () => {
   if (data.user.role === 'DOCTOR') {
-    if(valid){
-      request.put('/doctor/submit', data.use).then(res =>{
+    userRef.value.validate(valid => {
+      if (valid) {
         request.put('/doctor/submit', data.user).then(res => {
           if (res.code === '200') {
             ElMessage.success('提交成功，等待管理员审批')
@@ -100,19 +98,9 @@ const update = () => {
             ElMessage.error(res.msg)
           }
         })
-      })
-    }
-  }
-  if (data.user.role === 'DOCTOR') {
-    request.put('/doctor/update', data.user).then(res => {
-      if (res.code === '200') {
-        ElMessage.success('保存成功')
-        localStorage.setItem('xm-user', JSON.stringify(data.user))
-        emit('updateUser')
-      } else {
-        ElMessage.error(res.msg)
       }
     })
+
   }
 }
 </script>
