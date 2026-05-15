@@ -21,4 +21,7 @@ public interface DoctorMapper {
 
     List<Doctor> selectAll(Doctor doctor);
 
+    @Select("select * from doctor where status = '审批通过'")
+    List<Doctor> top4();
+
 }

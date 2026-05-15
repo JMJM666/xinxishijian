@@ -93,4 +93,9 @@ public class DoctorController {
         return Result.success(pageInfo);
     }
 
+    @GetMapping("/top4")
+    public Result top4() {
+        List<Doctor> list = doctorService.top4();
+        return Result.success(list);
+    }
 }
