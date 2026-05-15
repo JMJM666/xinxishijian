@@ -63,7 +63,7 @@
       <div style="width: 60%; margin: 0 auto; display: flex; align-items: center">
         <div style="font-size: 24px; width: 180px; font-weight: bold; color: #0b8bff">心理医生预约</div>
         <div style="font-size: 18px; color: #8c939d; margin-left: 20px; flex: 1">没有人是一座孤岛，每个人都需要心理咨询</div>
-        <div style="width: 120px; color: #666666; font-size: 15px; cursor: pointer">更多心理医生 >></div>
+        <div style="width: 120px; color: #666666; font-size: 15px; cursor: pointer" @click="navTo('/front/doctor')">更多心理医生 >></div>
       </div>
       <div style="width: 60%; margin: 20px auto">
         <el-row :gutter="10">
@@ -82,7 +82,7 @@
                     :content="item.content"
                 >
                   <template #reference>
-                    <div style="margin-top: 10px; color: #666666" class="line3">医生简介：{{ item.content }}</div>
+                    <div style="margin-top: 10px; color: #666666; line-height: 20px; height:60px" class="line3">医生简介：{{ item.content }}</div>
                   </template>
                 </el-popover>
               </div>
@@ -150,6 +150,9 @@ const loadDoctor = () => {
       ElMessage.error(res.msg)
     }
   })
+}
+const navTo = (url) => {
+    location.href = url
 }
 loadSideshow()
 loadPropagate()
