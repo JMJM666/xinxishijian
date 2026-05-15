@@ -9,6 +9,7 @@ public class Propagate {
     private String img;
     private Integer num;
     private String doctorName;
+    private String doctorAvatar;
 
     public Integer getId() {
         return id;
@@ -57,4 +58,12 @@ public class Propagate {
     public String getDoctorName() {return doctorName;}
 
     public void setDoctorName(String doctorName) {this.doctorName = doctorName;}
+
+    public String getDoctorAvatar() {
+        return doctorAvatar;
+    }
+
+    public void setDoctorAvatar(String doctorAvatar) {
+        this.doctorAvatar = doctorAvatar;
+    }
 }

@@ -10,7 +10,6 @@
             <if test="title != null"> and title like concat('%', #{title}, '%')</if>
             <if test="doctorId != null"> and doctor_id = #{doctorId}</if>
         </where>
-        order by id desc
     </select>
 
     <delete id="deleteById">
@@ -34,7 +33,7 @@
             <if test="title != null">#{title},</if>
             <if test="content != null">#{content},</if>
             <if test="time != null">#{time},</if>
-            <if test="doctorId != null">#{doctor_id},</if>
+            <if test="doctorId != null">#{doctorId},</if>
             <if test="img != null">#{img},</if>
             <if test="num != null">#{num},</if>
         </trim>
@@ -53,10 +52,10 @@
                 time = #{time},
             </if>
             <if test="img != null">
-                time = #{img},
+                img = #{img},
             </if>
             <if test="num != null">
-                time = #{num},
+                num = #{num},
             </if>
         </set>
         where id = #{id}

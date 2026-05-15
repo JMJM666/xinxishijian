@@ -114,4 +114,9 @@ public class DoctorService {
         doctor.setStatus("待审批");
         doctorMapper.updateById(doctor);
     }
+
+    public List<Doctor> top4() {
+        return doctorMapper.top4();
+    }
+
 }

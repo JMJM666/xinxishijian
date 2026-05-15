@@ -84,4 +84,13 @@ public class PropagateController {
         return Result.success(pageInfo);
     }
 
+    /**
+     * 查询浏览量最高的三个宣传帖子
+     */
+    @GetMapping("/selectTop3")
+    public Result selectTop3() {
+        List<Propagate> list = propagateService.selectTop3();
+        return Result.success(list);
+    }
+
 }
