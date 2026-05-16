@@ -73,7 +73,7 @@
               <div style="flex: 1;padding: 10px 0">APP下载</div>
 
             </div>
-            <div style="padding: 5px 0">友情链接：<a style="margin-left:10px;color: red;" href="https://space.bilibili.com/432113931">武哥聊编程</a> <a style="margin-left:10px;color: red" href="https://space.bilibili.com/402779077">程序员青戈</a> </div>
+
           </div>
         </div>
         <div style="width: 100%;text-align: center;color: #c2c2c2;margin-top: 40px;font-size: 20px">
