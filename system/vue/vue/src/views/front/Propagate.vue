@@ -1,7 +1,7 @@
 <template>
   <div style="width: 60%; margin: 20px auto; min-height: 500px">
     <div v-for="(item, index) in data.propagateData">
-      <div v-if="index % 2 === 0" class="card" style="margin-bottom: 10px; display: flex; cursor: pointer">
+      <div v-if="index % 2 === 0" class="card" style="margin-bottom: 10px; display: flex; cursor: pointer" @click="navTo('/front/propagateDetail?id=' + item.id )">
         <img :src="item.img" alt="" style="width: 200px; height: 150px; border-radius: 5px; margin-right: 10px">
         <div style="flex: 1; margin-left: 10px">
           <div style="font-size: 18px">{{ item.title }}</div>
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div v-else class="card" style="margin-bottom: 10px; display: flex; cursor: pointer">
+      <div v-else class="card" style="margin-bottom: 10px; display: flex; cursor: pointer" @click="navTo('/front/propagateDetail?id=' + item.id )">
         <div style="flex: 1; margin-right: 10px">
           <div style="font-size: 18px">{{ item.title }}</div>
           <div style="margin-top: 10px; color: #74726b; line-height: 20px; height: 80px" class="line4">{{ item.content }}</div>
@@ -60,6 +60,9 @@ const loadPropagate = () => {
       ElMessage.error(res.msg)
     }
   })
+}
+const navTo = (url) => {
+    location.href = url
 }
 loadPropagate()
 </script>

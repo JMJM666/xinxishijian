@@ -18,11 +18,9 @@
       <div style="width: 60%; margin: 20px auto">
         <el-row :gutter="10">
           <el-col :span="16">
-            <div class="card" v-for="item in data.propagateData" style="margin-bottom: 10px; display: flex; padding: 20px; cursor: pointer">
-              <img :src="item.img" alt="" style="width: 180px; height: 120px">
-              <div style="flex: 1; margin-left: 10px">
-                <div style="font-size: 18px; font-weight: bold">{{ item.title }}</div>
-                <div style="margin-top: 10px; color: #666666" class="line3">{{ item.content }}</div>
+            <div class="card" v-for="item in data.propagateData" style="margin-bottom: 10px; display: flex; padding: 20px; cursor: pointer" @click="navTo('/front/propagateDetail?id=' + item.id )">
+               <div style="flex: 1; margin-left: 10px">
+                 <div style="margin-top: 10px; color: #666666" class="line3">{{ item.content }}</div>
                 <div style="margin-top: 12px; display: flex; align-items: center">
                   <img :src="item.doctorAvatar" alt="" style="width: 20px; height: 20px; border-radius: 50%">
                   <div style="margin-left: 5px">{{ item.doctorName }}</div>
