@@ -4,7 +4,7 @@
 <mapper namespace="com.example.mapper.PropagateMapper">
 
     <select id="selectAll" resultType="com.example.entity.Propagate">
-        select propagate.*, doctor.name as doctorName from `propagate`
+        select propagate.*, doctor.name as doctorName, doctor.avatar as doctorAvatar from `propagate`
         left join doctor on propagate.doctor_id = doctor.id
         <where>
             <if test="title != null"> and title like concat('%', #{title}, '%')</if>

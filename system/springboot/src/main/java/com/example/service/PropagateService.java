@@ -52,7 +52,12 @@ public class PropagateService {
     }
 
     public Propagate selectById(Integer id) {
-        return propagateMapper.selectById(id);
+        Propagate propagate = propagateMapper.selectById(id);
+        Doctor doctor = doctorMapper.selectById(propagate.getDoctorId());
+        if(ObjectUtil.isNotEmpty(doctor)){
+            propagate.setDoctorName(doctor.getName());
+        }
+        return propagate;
     }
 
     public List<Propagate> selectAll(Propagate propagate) {
@@ -82,4 +87,12 @@ public class PropagateService {
         return propagates;
     }
 
+    public PageInfo<Propagate> selectPageFront(Propagate propagate, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Propagate> list = propagateMapper.selectAll(propagate);
+        for (Propagate dbPropagate : list) {
+            dbPropagate.setContent(HtmlUtil.cleanHtmlTag(dbPropagate.getContent()));
+        }
+        return PageInfo.of(list);
+    }
 }

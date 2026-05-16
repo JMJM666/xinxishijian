@@ -93,4 +93,15 @@ public class PropagateController {
         return Result.success(list);
     }
 
+    /**
+     * 前台分页查询
+     */
+    @GetMapping("/selectPageFront")
+    public Result selectPageFront(Propagate propagate,
+                                  @RequestParam(defaultValue = "1") Integer pageNum,
+                                  @RequestParam(defaultValue = "10") Integer pageSize) {
+        PageInfo<Propagate> pageInfo = propagateService.selectPageFront(propagate, pageNum, pageSize);
+        return Result.success(pageInfo);
+    }
+
 }
