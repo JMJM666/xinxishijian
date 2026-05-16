@@ -92,7 +92,6 @@ public class PropagateController {
         List<Propagate> list = propagateService.selectTop3();
         return Result.success(list);
     }
-
     /**
      * 前台分页查询
      */
@@ -103,5 +102,4 @@ public class PropagateController {
         PageInfo<Propagate> pageInfo = propagateService.selectPageFront(propagate, pageNum, pageSize);
         return Result.success(pageInfo);
     }
-
 }

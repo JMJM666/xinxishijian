@@ -18,7 +18,7 @@ public interface PropagateMapper {
 
     List<Propagate> selectAll(Propagate propagate);
 
-    @Select("select * from propagate order by num desc limit 3")
+    @Select("select * from propagate order by num desc  limit 3")
     List<Propagate> selectTop3();
 
 }

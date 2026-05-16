@@ -86,7 +86,6 @@ public class PropagateService {
         }
         return propagates;
     }
-
     public PageInfo<Propagate> selectPageFront(Propagate propagate, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<Propagate> list = propagateMapper.selectAll(propagate);
